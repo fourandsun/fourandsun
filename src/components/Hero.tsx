@@ -26,6 +26,16 @@ function FloatingBlob({ className, delay = 0 }: { className: string; delay?: num
 
 const chars = "사랑하는 것을 만듭니다".split("");
 
+// amber → rose → pink 그라데이션 색상 보간
+function charColor(i: number, total: number): string {
+  const t = i / (total - 1);
+  // #fbbf24 → #fb7185 → #f9a8d4
+  const r = Math.round(t < 0.5 ? 251 : 251 + (249 - 251) * ((t - 0.5) * 2));
+  const g = Math.round(t < 0.5 ? 191 + (113 - 191) * (t * 2) : 113 + (168 - 113) * ((t - 0.5) * 2));
+  const b = Math.round(t < 0.5 ? 36 + (133 - 36) * (t * 2) : 133 + (212 - 133) * ((t - 0.5) * 2));
+  return `rgb(${r},${g},${b})`;
+}
+
 function LoveSign() {
   const [hovered, setHovered] = useState(false);
 
@@ -57,12 +67,13 @@ function LoveSign() {
 
       {/* 호버 시 텍스트 */}
       <h1
-        className="text-[2.8rem] md:text-[4rem] font-medium text-slate-900 leading-[1.5] tracking-[0.04em] select-none"
+        className="text-[2.8rem] md:text-[4rem] font-medium leading-[1.5] tracking-[0.04em] select-none"
         aria-label="사랑하는 것을 만듭니다"
       >
         {chars.map((char, i) => (
           <motion.span
             key={i}
+            style={{ color: charColor(i, chars.length) }}
             animate={{
               opacity: hovered ? 1 : 0,
               y: hovered ? 0 : 12,
