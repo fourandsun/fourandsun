@@ -62,27 +62,6 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* 하단 — Footer 영역 */}
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.0, delay: 0.3, ease }}
-        className="border-t border-slate-200/60 py-6"
-      >
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-[11px] tracking-[0.2em] text-slate-400 uppercase">
-            © 2026 fourandsun
-          </p>
-          <div className="flex items-center gap-6">
-            {/* 나중에 개인정보처리방침 등 추가 */}
-            <span className="text-[11px] tracking-[0.15em] text-slate-300 uppercase">
-              Privacy Policy
-            </span>
-          </div>
-        </div>
-      </motion.footer>
-
     </section>
   );
 }
