@@ -108,7 +108,7 @@ export default function Made() {
                 해야할 일을 정리하고, 해결하는 앱
               </p>
               <p className="mt-5 text-sm font-light leading-7 text-slate-600">
-                Paper로 할 일을 묶고, Schedule로 일정을 살피고, Wave로 지금 집중할 일을 하나씩 해결합니다. 흩어진 생각을 손에 잡히는 흐름으로 바꾸는 포앤썬의 첫 번째 작업입니다.
+                Paper로 할 일을 묶고, Schedule로 일정을 살피고, Wave로 지금 집중할 일을 하나씩 해결합니다. 흩어진 생각을 손에 잡히는 흐름으로 바꾸는 초옥의 첫 번째 작업입니다.
               </p>
             </div>
             <a

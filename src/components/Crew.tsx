@@ -5,21 +5,6 @@ import SectionLayout from "@/components/SectionLayout";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const ways = [
-  {
-    title: "다정하게 관찰하기",
-    body: "사람이 남기는 말투, 표정, 리듬을 오래 바라보고 작은 신호에서 시작점을 찾습니다.",
-  },
-  {
-    title: "작게 실험하기",
-    body: "거창한 선언보다 손에 잡히는 조각을 먼저 만들고, 만져보며 다음 방향을 정합니다.",
-  },
-  {
-    title: "오래 남는 온기 만들기",
-    body: "잠깐의 주목보다 시간이 지나도 다시 떠오르는 감각과 이야기를 중요하게 생각합니다.",
-  },
-];
-
 const members = [
   {
     name: "Cho-ok",
@@ -99,33 +84,6 @@ function CrewMark({
 export default function Crew() {
   return (
     <SectionLayout id="crew" label="Crew" bg="bg-white" accent="rose" wide>
-      <motion.p
-        initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: true, margin: "-15% 0px" }}
-        transition={{ duration: 1.2, ease }}
-        className="max-w-2xl text-2xl font-light leading-[1.75] tracking-tight text-slate-900 md:text-3xl"
-      >
-        포앤썬은 각자의 사랑을 가지고 모여, 같은 온도로 오래 만드는 크루입니다.
-      </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
-        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        viewport={{ once: true, margin: "-15% 0px" }}
-        transition={{ duration: 0.9, ease }}
-        className="flex flex-wrap gap-x-4 gap-y-2 border-y border-rose-100 py-5"
-      >
-        {ways.map((way) => (
-          <span
-            key={way.title}
-            className="text-xs font-light leading-6 text-slate-500"
-          >
-            {way.title}
-          </span>
-        ))}
-      </motion.div>
-
       <div>
         <motion.p
           initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
@@ -134,7 +92,7 @@ export default function Crew() {
           transition={{ duration: 0.9, ease }}
           className="mb-5 text-[11px] font-medium uppercase tracking-[0.24em] text-slate-400"
         >
-          Who we are
+          Crew
         </motion.p>
 
         <div className="grid gap-4 md:grid-cols-3">
