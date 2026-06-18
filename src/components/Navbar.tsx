@@ -20,13 +20,13 @@ export default function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-amber-100/50"
-      style={{ backgroundColor: "#FDF4EE" }}
+      className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/70"
+      style={{ backgroundColor: "#FFFFFF" }}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <button onClick={() => goTo(0)} className="flex items-center">
           <Image
-            src="/horizontal_logo.png"
+            src="/fourandsun-horizontal-logo.png"
             alt="fourandsun"
             height={36}
             width={160}
