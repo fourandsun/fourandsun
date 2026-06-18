@@ -6,10 +6,10 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Contact() {
   return (
-    <section id="contact" className="min-h-screen flex flex-col px-8 bg-[#FAFAF8]">
+    <section id="contact" className="scroll-mt-20 px-8 py-28 md:py-36 bg-[#FAFAF8]">
 
       {/* 상단 — 콘텐츠 */}
-      <div className="flex-1 flex items-center">
+      <div>
         <div className="max-w-5xl mx-auto w-full">
           <div className="grid md:grid-cols-[160px_1fr] gap-12 md:gap-24 items-start">
 
@@ -39,8 +39,8 @@ export default function Contact() {
                   href="mailto:hello@fourandsun.com"
                   initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.2, delay: 0.1, ease }}
+                  viewport={{ once: true, margin: "-15% 0px" }}
+                  transition={{ duration: 1.2, delay: 0.05, ease }}
                   className="text-2xl md:text-3xl font-light text-slate-900 leading-[1.75] tracking-tight hover:text-amber-500 transition-colors duration-500 w-fit"
                 >
                   hello@fourandsun.com

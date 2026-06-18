@@ -5,15 +5,14 @@ import Image from "next/image";
 import { useActiveSection } from "@/context/ActiveSectionContext";
 
 const navLinks = [
-  { label: "About",     sectionIndex: 1, id: "about" },
-  { label: "Mission",   sectionIndex: 2, id: "mission" },
-  { label: "Our Works", sectionIndex: 3, id: "products" },
-  { label: "Contact",   sectionIndex: 4, id: "contact" },
+  { label: "About", id: "about" },
+  { label: "Works", id: "works" },
+  { label: "Crew", id: "crew" },
+  { label: "Contact", id: "contact" },
 ];
 
 export default function Navbar() {
-  const { section, goTo } = useActiveSection();
-  const activeId = navLinks.find((l) => l.sectionIndex === section)?.id ?? "";
+  const { activeId, scrollTo } = useActiveSection();
 
   return (
     <motion.header
@@ -24,7 +23,7 @@ export default function Navbar() {
       style={{ backgroundColor: "#FFFFFF" }}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <button onClick={() => goTo(0)} className="flex items-center">
+        <button onClick={() => scrollTo("hero")} className="flex items-center">
           <Image
             src="/fourandsun-horizontal-logo.png"
             alt="fourandsun"
@@ -39,7 +38,7 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <button
               key={link.id}
-              onClick={() => goTo(link.sectionIndex)}
+              onClick={() => scrollTo(link.id)}
               className={`relative text-sm font-medium transition-colors duration-300 ${
                 activeId === link.id
                   ? "text-amber-500"

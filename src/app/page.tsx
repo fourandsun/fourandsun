@@ -1,54 +1,72 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Navbar from "@/components/Navbar";
-import PageScroller from "@/components/PageScroller";
 import FloatingScrollDown from "@/components/FloatingScrollDown";
+import GlobalCursorGlow from "@/components/GlobalCursorGlow";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Mission from "@/components/Mission";
 import Made from "@/components/Made";
+import Crew from "@/components/Crew";
 import Contact from "@/components/Contact";
 import ActiveSectionContext from "@/context/ActiveSectionContext";
 import Footer from "@/components/Footer";
 
-const SECTION_STEPS = [1, 1, 1, 1, 1];
-type ScrollOptions = {
-  allowDuringAnimation?: boolean;
-  duration?: number;
-  skipThrottle?: boolean;
-};
+const SECTION_IDS = ["hero", "about", "works", "crew", "contact"];
 
 export default function Home() {
-  const [state, setState] = useState({ section: 0, step: 0 });
-  const goToRef = useRef<((i: number, options?: ScrollOptions) => boolean) | null>(null);
-  const advanceRef = useRef<((dir: 1 | -1, options?: ScrollOptions) => boolean) | null>(null);
+  const [activeId, setActiveId] = useState("hero");
 
-  const goTo = (i: number, options?: ScrollOptions) => goToRef.current?.(i, options) ?? false;
-  const advance = (dir: 1 | -1, options?: ScrollOptions) => advanceRef.current?.(dir, options) ?? false;
-  const handleChange = useCallback((section: number, step: number) => {
-    setState({ section, step });
+  const scrollTo = useCallback((id: string) => {
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }, []);
 
+  useEffect(() => {
+    const sections = SECTION_IDS
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id) {
+          setActiveId(visible.target.id);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -50% 0px",
+        threshold: [0.1, 0.35, 0.6],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const contextValue = useMemo(() => ({ activeId, scrollTo }), [activeId, scrollTo]);
+
   return (
-    <ActiveSectionContext.Provider value={{ ...state, goTo, advance }}>
+    <ActiveSectionContext.Provider value={contextValue}>
       <Navbar />
+      <FloatingScrollDown />
+      <GlobalCursorGlow />
+      <main>
+        <Hero />
+        <About />
+        <Made />
+        <Crew />
+        <Contact />
+      </main>
       <Footer />
-      <FloatingScrollDown totalSections={SECTION_STEPS.length} />
-      <PageScroller
-        sectionSteps={SECTION_STEPS}
-        onChange={handleChange}
-        goToRef={goToRef}
-        advanceRef={advanceRef}
-      >
-        <main>
-          <Hero />
-          <About />
-          <Mission />
-          <Made />
-          <Contact />
-        </main>
-      </PageScroller>
     </ActiveSectionContext.Provider>
   );
 }

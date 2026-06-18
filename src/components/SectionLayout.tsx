@@ -11,6 +11,7 @@ interface Props {
   bg?: string;
   children: ReactNode;
   accent?: "rose" | "amber";
+  wide?: boolean;
 }
 
 export default function SectionLayout({
@@ -19,12 +20,13 @@ export default function SectionLayout({
   bg = "bg-white",
   children,
   accent = "rose",
+  wide = false,
 }: Props) {
   const lineColor = accent === "amber" ? "bg-amber-300/50" : "bg-rose-200";
   const markColor = accent === "amber" ? "text-amber-400" : "text-rose-300";
 
   return (
-    <section id={id} className={`min-h-screen flex items-center px-8 ${bg}`}>
+    <section id={id} className={`scroll-mt-20 px-8 py-28 md:py-36 ${bg}`}>
       <div className="max-w-5xl mx-auto w-full">
         <div className="grid md:grid-cols-[160px_1fr] gap-12 md:gap-24 items-start">
 
@@ -53,7 +55,7 @@ export default function SectionLayout({
               className={`absolute -left-6 top-1 h-full w-px ${lineColor} hidden md:block`}
             />
 
-            <div className="flex flex-col max-w-xl gap-10">
+            <div className={`flex flex-col gap-10 ${wide ? "max-w-3xl" : "max-w-xl"}`}>
               {children}
 
               {/* Sun mark */}
