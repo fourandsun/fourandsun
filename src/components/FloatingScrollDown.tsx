@@ -3,6 +3,8 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useActiveSection } from "@/context/ActiveSectionContext";
 
+const QUICK_SCROLL_DURATION = 0.55;
+
 interface Props {
   totalSections: number;
 }
@@ -10,6 +12,19 @@ interface Props {
 export default function FloatingScrollDown({ totalSections }: Props) {
   const { section, advance, goTo } = useActiveSection();
   const isLast = section >= totalSections - 1;
+  const handleClick = () => {
+    const options = {
+      allowDuringAnimation: true,
+      duration: QUICK_SCROLL_DURATION,
+      skipThrottle: true,
+    };
+    if (isLast) {
+      goTo(0, options);
+      return;
+    }
+
+    advance(1, options);
+  };
 
   return (
     <motion.button
@@ -18,8 +33,8 @@ export default function FloatingScrollDown({ totalSections }: Props) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      onClick={() => isLast ? goTo(0) : advance(1)}
-      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 group"
+      onClick={handleClick}
+      className="fixed bottom-16 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 group sm:bottom-10"
       aria-label={isLast ? "맨 위로" : "다음으로"}
     >
       <motion.div

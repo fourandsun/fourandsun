@@ -3,7 +3,7 @@ import "./globals.css";
 import "pretendard/dist/web/variable/pretendardvariable.css";
 
 export const metadata: Metadata = {
-  title: "FourAndSun — 조직 개발자 등록",
+  title: "4&sun — we create loving sunshine",
   description: "FourAndSun 조직 개발자로 등록하고 함께 성장하세요.",
   icons: { icon: "/favicon.png" },
 };
