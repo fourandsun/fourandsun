@@ -10,8 +10,10 @@ import haeilWordmark from "../../assets/works/haeil/wordmark(dark).png";
 const ease = [0.22, 1, 0.36, 1] as const;
 const haeilAppStoreUrl =
   "https://apps.apple.com/kr/app/haeil-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC/id6769830035";
-const seaTurtleSoupUrl =
-  "https://sea-turtle-soup-riddle.blcklamb.net/game/b2e469d2-0393-4838-9269-bdb7494c4166";
+const haeilWebsiteUrl = "https://www.paper-wave.com/";
+const seaTurtleSoupUrl = "https://sea-turtle-soup-riddle.blcklamb.net";
+const haeilReleaseDate = "2026.06.17";
+const seaTurtleSoupReleaseDate = "2026.06.14";
 
 const haeilTags = [
   {
@@ -38,6 +40,20 @@ const seaTurtleSoupTags = [
   },
   {
     label: "interactive story",
+    className: "border-slate-200 text-slate-500",
+  },
+];
+const jansangTags = [
+  {
+    label: "Cho-ok",
+    className: "border-slate-300 bg-slate-100 text-slate-700",
+  },
+  {
+    label: "one-line diary",
+    className: "border-slate-200 text-slate-500",
+  },
+  {
+    label: "memory",
     className: "border-slate-200 text-slate-500",
   },
 ];
@@ -79,6 +95,9 @@ export default function Made() {
                 TODO · Routine · Schedule
               </p>
             </div>
+            <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[11px] font-medium uppercase tracking-[0.18em] text-emerald-950/70">
+              Released {haeilReleaseDate}
+            </p>
           </div>
 
           <div className="flex flex-col justify-between gap-12 p-8 md:p-10">
@@ -111,14 +130,24 @@ export default function Made() {
                 Paper로 할 일을 묶고, Schedule로 일정을 살피고, Wave로 지금 집중할 일을 하나씩 해결합니다. 흩어진 생각을 손에 잡히는 흐름으로 바꾸는 초옥의 첫 번째 작업입니다.
               </p>
             </div>
-            <a
-              href={haeilAppStoreUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="w-fit border border-slate-300 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-slate-700 transition-colors duration-300 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
-            >
-              View on App Store
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={haeilWebsiteUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="w-fit border border-slate-300 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-slate-700 transition-colors duration-300 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+              >
+                Visit Website
+              </a>
+              <a
+                href={haeilAppStoreUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="w-fit border border-slate-300 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-slate-700 transition-colors duration-300 hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700"
+              >
+                View on App Store
+              </a>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -152,6 +181,9 @@ export default function Made() {
                 question, infer, uncover
               </p>
             </div>
+            <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[11px] font-medium uppercase tracking-[0.18em] text-cyan-950/70">
+              Released {seaTurtleSoupReleaseDate}
+            </p>
           </div>
 
           <div className="flex flex-col justify-between gap-12 p-8 md:p-10">
@@ -181,6 +213,71 @@ export default function Made() {
             >
               Play the riddle
             </a>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, margin: "-15% 0px" }}
+        transition={{ duration: 1.2, delay: 0.2, ease }}
+        className="overflow-hidden border border-slate-200 bg-white"
+      >
+        <div className="grid gap-0 md:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative flex min-h-80 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_30%_30%,rgba(71,85,105,0.16),transparent_34%),radial-gradient(circle_at_72%_68%,rgba(148,163,184,0.22),transparent_42%),linear-gradient(135deg,#f8fafc,#fff)] p-8 md:p-10">
+            <div className="pointer-events-none absolute -bottom-16 left-10 h-56 w-56 rounded-full bg-slate-200/40 blur-3xl" />
+            <div className="pointer-events-none absolute right-12 top-12 h-28 w-20 rotate-6 border border-slate-200/80 bg-white/25" />
+            <div className="pointer-events-none absolute bottom-14 left-16 h-24 w-16 rotate-[-10deg] border border-white/60 bg-white/20" />
+            <div className="relative text-center">
+              <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-slate-700/60">
+                work 03
+              </p>
+              <h3 className="mt-6 text-4xl font-light leading-tight tracking-tight text-slate-950 md:text-5xl">
+                Jansang
+              </h3>
+              <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-slate-600">
+                collect, remember, continue
+              </p>
+            </div>
+            <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-700">
+              To be continued
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-between gap-12 p-8 md:p-10">
+            <div>
+              <div className="flex flex-wrap gap-2">
+                {jansangTags.map((tag) =>
+                  tag.label === "Cho-ok" ? (
+                    <button
+                      key={tag.label}
+                      type="button"
+                      onClick={() => scrollTo("crew")}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 hover:border-slate-400 hover:bg-slate-200 ${tag.className}`}
+                    >
+                      {tag.label}
+                    </button>
+                  ) : (
+                    <span
+                      key={tag.label}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] ${tag.className}`}
+                    >
+                      {tag.label}
+                    </span>
+                  )
+                )}
+              </div>
+              <p className="mt-8 text-xl font-light leading-[1.8] tracking-tight text-slate-900 md:text-2xl">
+                흩어질 기억을 기록해두는 한줄 일기 앱
+              </p>
+              <p className="mt-5 text-sm font-light leading-7 text-slate-600">
+                하루의 끝에 남겨두고 싶은 장면을 한 줄로 붙잡아 둡니다. 단 한 줄의 기록으로 잊히지 않는 기억을 잔상처럼 보관해 보세요.
+              </p>
+            </div>
+            <span className="w-fit border border-slate-300 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-slate-500">
+              To be continued
+            </span>
           </div>
         </div>
       </motion.div>
