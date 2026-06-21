@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import FloatingScrollDown from "@/components/FloatingScrollDown";
 import GlobalCursorGlow from "@/components/GlobalCursorGlow";
@@ -16,11 +16,16 @@ const SECTION_IDS = ["hero", "about", "works", "crew", "contact"];
 
 export default function Home() {
   const [activeId, setActiveId] = useState("hero");
+  const pendingScrollTarget = useRef<string | null>(null);
+  const pendingScrollUntil = useRef(0);
 
   const scrollTo = useCallback((id: string) => {
     const target = document.getElementById(id);
     if (!target) return;
 
+    pendingScrollTarget.current = id;
+    pendingScrollUntil.current = Date.now() + 900;
+    setActiveId(id);
     target.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -31,7 +36,19 @@ export default function Home() {
     let frame = 0;
 
     const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.38;
+      if (pendingScrollTarget.current) {
+        const target = document.getElementById(pendingScrollTarget.current);
+        const targetTop = target?.getBoundingClientRect().top ?? 0;
+        const isPending = Date.now() < pendingScrollUntil.current;
+
+        if (isPending && target && Math.abs(targetTop - 80) > 12) {
+          return;
+        }
+
+        pendingScrollTarget.current = null;
+      }
+
+      const scrollPosition = window.scrollY + window.innerHeight * 0.55;
       const currentId =
         SECTION_IDS.findLast((id) => {
           const section = document.getElementById(id);
