@@ -28,28 +28,33 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const sections = SECTION_IDS
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => Boolean(section));
+    let frame = 0;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.38;
+      const currentId =
+        SECTION_IDS.findLast((id) => {
+          const section = document.getElementById(id);
+          return section ? section.offsetTop <= scrollPosition : false;
+        }) ?? "hero";
 
-        if (visible?.target.id) {
-          setActiveId(visible.target.id);
-        }
-      },
-      {
-        rootMargin: "-35% 0px -50% 0px",
-        threshold: [0.1, 0.35, 0.6],
-      }
-    );
+      setActiveId(currentId);
+    };
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const contextValue = useMemo(() => ({ activeId, scrollTo }), [activeId, scrollTo]);

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useActiveSection } from "@/context/ActiveSectionContext";
 
 const navLinks = [
-  { label: "About", id: "about" },
+  { label: "Philosophy", id: "about" },
   { label: "Works", id: "works" },
   { label: "Crew", id: "crew" },
   { label: "Contact", id: "contact" },

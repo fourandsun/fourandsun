@@ -20,9 +20,9 @@ const members = [
   },
   {
     name: "Crew 03",
-    role: "Visual & Content",
+    role: "Recruiting",
     mark: "visual",
-    note: "빛, 색, 말, 이미지가 같은 온도로 남을 수 있도록 감각을 다듬습니다.",
+    note: "아직 비어 있는 세 번째 자리입니다. 우리와 함께 즐거운 작품을 만들고 싶다면 연락해주세요. 여기가 당신의 자리일지도 몰라요.",
   },
 ];
 
@@ -90,9 +90,10 @@ export default function Crew() {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-15% 0px" }}
           transition={{ duration: 0.9, ease }}
-          className="mb-5 text-[11px] font-medium uppercase tracking-[0.24em] text-slate-400"
+          className="mb-8 max-w-2xl text-xl font-light leading-[1.8] tracking-tight text-slate-900 md:text-2xl"
         >
-          Crew
+          포앤썬은 사랑하는 것을 만들고, 그 마음이 누군가에게 다정한 햇살처럼
+          닿기를 바라는 크루입니다.
         </motion.p>
 
         <div className="grid gap-4 md:grid-cols-3">
