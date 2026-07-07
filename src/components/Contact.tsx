@@ -46,6 +46,17 @@ export default function Contact() {
                   hello@fourandsun.com
                 </motion.a>
 
+                <motion.p
+                  initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  viewport={{ once: true, margin: "-15% 0px" }}
+                  transition={{ duration: 1.0, delay: 0.25, ease }}
+                  className="text-sm font-light leading-7 text-slate-500"
+                >
+                  우리와 함께 즐거운 작품을 만들고 싶다면 연락해주세요.
+                  다음 멤버는 당신일지도 몰라요.
+                </motion.p>
+
                 <motion.span
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}

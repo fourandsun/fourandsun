@@ -57,6 +57,20 @@ const jansangTags = [
     className: "border-slate-200 text-slate-500",
   },
 ];
+const recitaurantTags = [
+  {
+    label: "Dong32",
+    className: "border-orange-200 bg-orange-50 text-orange-700",
+  },
+  {
+    label: "recipe",
+    className: "border-slate-200 text-slate-500",
+  },
+  {
+    label: "sharing",
+    className: "border-slate-200 text-slate-500",
+  },
+];
 
 export default function Made() {
   const { scrollTo } = useActiveSection();
@@ -273,6 +287,72 @@ export default function Made() {
               </p>
               <p className="mt-5 text-sm font-light leading-7 text-slate-600">
                 하루의 끝에 남겨두고 싶은 장면을 한 줄로 붙잡아 둡니다. 단 한 줄의 기록으로 잊히지 않는 기억을 잔상처럼 보관해 보세요.
+              </p>
+            </div>
+            <span className="w-fit border border-slate-300 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-slate-500">
+              To be continued
+            </span>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, margin: "-15% 0px" }}
+        transition={{ duration: 1.2, delay: 0.25, ease }}
+        className="overflow-hidden border border-orange-200/80 bg-white"
+      >
+        <div className="grid gap-0 md:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative flex min-h-80 items-center justify-center overflow-hidden bg-[linear-gradient(135deg,#fff7ed,#ffffff_48%,#f7fee7)] p-8 md:p-10">
+            <div className="pointer-events-none absolute left-10 top-10 h-24 w-24 border border-orange-200/70 bg-white/35" />
+            <div className="pointer-events-none absolute bottom-12 right-14 h-20 w-28 rotate-3 border border-lime-200/70 bg-lime-50/35" />
+            <div className="pointer-events-none absolute left-1/2 top-16 h-px w-72 -translate-x-1/2 bg-gradient-to-r from-transparent via-orange-200 to-transparent" />
+            <div className="pointer-events-none absolute bottom-20 left-1/2 h-px w-64 -translate-x-1/2 bg-gradient-to-r from-transparent via-lime-200 to-transparent" />
+            <div className="relative text-center">
+              <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-orange-900/55">
+                work 04
+              </p>
+              <h3 className="mt-6 text-4xl font-light leading-tight tracking-tight text-slate-950 md:text-5xl">
+                Recitaurant
+              </h3>
+              <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-orange-900/60">
+                cook, save, share
+              </p>
+            </div>
+            <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[11px] font-medium uppercase tracking-[0.18em] text-orange-950/70">
+              To be continued
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-between gap-12 p-8 md:p-10">
+            <div>
+              <div className="flex flex-wrap gap-2">
+                {recitaurantTags.map((tag) =>
+                  tag.label === "Dong32" ? (
+                    <button
+                      key={tag.label}
+                      type="button"
+                      onClick={() => scrollTo("crew")}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 hover:border-orange-300 hover:bg-orange-100 ${tag.className}`}
+                    >
+                      {tag.label}
+                    </button>
+                  ) : (
+                    <span
+                      key={tag.label}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] ${tag.className}`}
+                    >
+                      {tag.label}
+                    </span>
+                  )
+                )}
+              </div>
+              <p className="mt-8 text-xl font-light leading-[1.8] tracking-tight text-slate-900 md:text-2xl">
+                나만의 음식 레시피를 기록하고 공유하는 앱
+              </p>
+              <p className="mt-5 text-sm font-light leading-7 text-slate-600">
+                자취하는 날에도 익숙한 집밥의 맛을 다시 꺼낼 수 있도록, 소중한 레시피를 등록하고 함께 나눕니다. 서로의 식탁을 이어주는 멋진 레시토랑을 준비하고 있습니다.
               </p>
             </div>
             <span className="w-fit border border-slate-300 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-slate-500">
