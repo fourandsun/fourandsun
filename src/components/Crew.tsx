@@ -7,33 +7,39 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const members = [
   {
-    name: "Cho-ok",
-    role: "Crew Lead",
-    mark: "love",
-    note: "온 세상을 사랑으로 가득 차게 만들고 싶다는 목표로 포앤썬 크루를 만들었습니다. 즐거운 연결을 만드는 작품을 만듭니다.",
-  },
-  {
     name: "Chap-jeong",
     role: "Product & Experience",
     mark: "product",
+    number: 2,
+    isLeader: false,
     note: "크루에 들어오기도 전에 제품부터 만들었습니다. 세상을 즐겁게 하는 영향력 있는 제품을 만듭니다.",
+  },
+  {
+    name: "Cho-ok",
+    role: "Crew Lead",
+    mark: "love",
+    number: 1,
+    isLeader: true,
+    note: "온 세상을 사랑으로 가득 차게 만들고 싶다는 목표로 포앤썬 크루를 만들었습니다. 즐거운 연결을 만드는 작품을 만듭니다.",
   },
   {
     name: "Dong32",
     role: "Impact Creator",
     mark: "visual",
+    number: 3,
+    isLeader: false,
     note: "만들고 싶은 걸 만들면서, 세상에 필요한 것들을 채워나갑니다. 자유로운 도전으로 작게 시작해 큰 결과를 만듭니다.",
   },
 ];
 
 function CrewMark({
-  index,
+  number,
   type,
 }: {
-  index: number;
+  number: number;
   type: (typeof members)[number]["mark"];
 }) {
-  const number = String(index + 1).padStart(2, "0");
+  const label = String(number).padStart(2, "0");
 
   if (type === "love") {
     return (
@@ -44,7 +50,7 @@ function CrewMark({
         <div className="absolute left-0 top-9 h-px w-full bg-rose-300/70" />
         <div className="absolute bottom-2 right-2 h-4 w-4 rounded-full bg-amber-200/70" />
         <span className="absolute bottom-2 left-2 text-[11px] font-light tracking-[0.16em] text-slate-600">
-          {number}
+          {label}
         </span>
       </div>
     );
@@ -60,7 +66,7 @@ function CrewMark({
         <div className="absolute bottom-3 right-3 h-7 w-px rotate-[-38deg] bg-slate-500/70" />
         <div className="absolute bottom-2 right-2 h-2 w-2 bg-slate-500/70" />
         <span className="absolute bottom-2 left-2 text-[11px] font-light tracking-[0.16em] text-slate-600">
-          {number}
+          {label}
         </span>
       </div>
     );
@@ -75,7 +81,7 @@ function CrewMark({
       <div className="absolute left-4 bottom-7 h-px w-6 bg-slate-300/80" />
       <div className="absolute right-3 top-3 h-8 w-px rotate-[34deg] bg-rose-300/80" />
       <span className="absolute bottom-2 left-2 text-[11px] font-light tracking-[0.16em] text-slate-600">
-        {number}
+        {label}
       </span>
     </div>
   );
@@ -104,9 +110,14 @@ export default function Crew() {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-15% 0px" }}
               transition={{ duration: 1.0, delay: i * 0.12, ease }}
-              className="group border border-rose-100 bg-white p-6 transition-colors duration-500 hover:border-amber-200 hover:bg-amber-50/40"
+              className={[
+                "group bg-white p-6 transition-colors duration-500 hover:bg-amber-50/40",
+                member.isLeader
+                  ? "border-2 border-rose-300 hover:border-amber-300"
+                  : "border border-rose-300 hover:border-amber-300",
+              ].join(" ")}
             >
-              <CrewMark index={i} type={member.mark} />
+              <CrewMark number={member.number} type={member.mark} />
               <h3 className="mt-8 text-xl font-light tracking-tight text-slate-900">
                 {member.name}
               </h3>
