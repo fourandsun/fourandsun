@@ -12,8 +12,11 @@ const haeilAppStoreUrl =
   "https://apps.apple.com/kr/app/haeil-%ED%95%B4%EC%95%BC%ED%95%A0-%EC%9D%BC/id6769830035";
 const haeilWebsiteUrl = "https://www.paper-wave.com/";
 const seaTurtleSoupUrl = "https://sea-turtle-soup-riddle.blcklamb.net";
+const catnapUrl =
+  "https://www.youtube.com/watch?v=q2qwHnWFwyg&list=OLAK5uy_kCpjek9juYEy5a4xcDbBLIPn-mWb7yrds&index=2";
 const haeilReleaseDate = "2026.06.17";
 const seaTurtleSoupReleaseDate = "2026.06.14";
+const catnapReleaseDate = "2024.03.29";
 
 const haeilTags = [
   {
@@ -68,6 +71,20 @@ const recitaurantTags = [
   },
   {
     label: "sharing",
+    className: "border-slate-200 text-slate-500",
+  },
+];
+const catnapTags = [
+  {
+    label: "Inho",
+    className: "border-violet-200 bg-violet-50 text-violet-700",
+  },
+  {
+    label: "music",
+    className: "border-slate-200 text-slate-500",
+  },
+  {
+    label: "composition · guitar",
     className: "border-slate-200 text-slate-500",
   },
 ];
@@ -358,6 +375,77 @@ export default function Made() {
             <span className="w-fit border border-slate-300 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-slate-500">
               To be continued
             </span>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, margin: "-15% 0px" }}
+        transition={{ duration: 1.2, delay: 0.3, ease }}
+        className="overflow-hidden border border-violet-200/80 bg-white"
+      >
+        <div className="grid gap-0 md:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative flex min-h-80 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_30%_28%,rgba(109,40,217,0.32),transparent_34%),radial-gradient(circle_at_72%_68%,rgba(30,41,59,0.72),transparent_42%),linear-gradient(135deg,#181326,#020617)] p-8 md:p-10">
+            <div className="pointer-events-none absolute -bottom-16 -left-10 h-56 w-56 rounded-full bg-violet-950/45 blur-3xl" />
+            <div className="pointer-events-none absolute left-[14%] top-1/2 h-px w-[72%] -translate-y-1/2 rotate-[-8deg] bg-violet-400/25" />
+            <div className="pointer-events-none absolute left-[18%] top-[55%] h-px w-[64%] -translate-y-1/2 rotate-[-8deg] bg-slate-400/20" />
+            <div className="pointer-events-none absolute right-[18%] top-[28%] h-20 w-20 rounded-full border border-violet-300/20" />
+            <div className="relative text-center">
+              <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-violet-200/55">
+                work 05
+              </p>
+              <h3 className="mt-6 text-4xl font-light leading-tight tracking-tight text-white md:text-5xl">
+                Catnap
+              </h3>
+              <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-violet-200/60">
+                compose, play, linger
+              </p>
+            </div>
+            <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[11px] font-medium uppercase tracking-[0.18em] text-slate-300/70">
+              Released {catnapReleaseDate}
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-between gap-12 p-8 md:p-10">
+            <div>
+              <div className="flex flex-wrap gap-2">
+                {catnapTags.map((tag) =>
+                  tag.label === "Inho" ? (
+                    <button
+                      key={tag.label}
+                      type="button"
+                      onClick={() => scrollTo("crew")}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 hover:border-violet-300 hover:bg-violet-100 ${tag.className}`}
+                    >
+                      {tag.label}
+                    </button>
+                  ) : (
+                    <span
+                      key={tag.label}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] ${tag.className}`}
+                    >
+                      {tag.label}
+                    </span>
+                  )
+                )}
+              </div>
+              <p className="mt-8 text-xl font-light leading-[1.8] tracking-tight text-slate-900 md:text-2xl">
+                어둠 속에서 천천히 번지는 음악
+              </p>
+              <p className="mt-5 text-sm font-light leading-7 text-slate-600">
+                어두운 정서와 긴 여운을 담아낸 Inho의 작업입니다. 사루의 Catnap에서 작곡과 기타로 그려낸 깊은 분위기를 만나보세요.
+              </p>
+            </div>
+            <a
+              href={catnapUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-fit border border-slate-300 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-slate-700 transition-colors duration-300 hover:border-violet-300 hover:bg-violet-50 hover:text-violet-700"
+            >
+              Listen on YouTube
+            </a>
           </div>
         </div>
       </motion.div>
