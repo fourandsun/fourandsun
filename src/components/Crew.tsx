@@ -32,7 +32,7 @@ const members = [
   },
   {
     name: "Inho",
-    role: "Composer & Guitarist",
+    role: "Composition Director",
     mark: "music",
     number: 4,
     isLeader: false,

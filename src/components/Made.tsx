@@ -84,7 +84,7 @@ const catnapTags = [
     className: "border-slate-200 text-slate-500",
   },
   {
-    label: "composition · guitar",
+    label: "guitar",
     className: "border-slate-200 text-slate-500",
   },
 ];
@@ -435,7 +435,7 @@ export default function Made() {
                 어둠 속에서 천천히 번지는 음악
               </p>
               <p className="mt-5 text-sm font-light leading-7 text-slate-600">
-                어두운 정서와 긴 여운을 담아낸 Inho의 작업입니다. 사루의 Catnap에서 작곡과 기타로 그려낸 깊은 분위기를 만나보세요.
+                어두운 정서와 긴 여운을 담아낸 Inho의 작업입니다. saru의 Catnap에서 기타 연주로 그려낸 깊은 분위기를 만나보세요.
               </p>
             </div>
             <a
