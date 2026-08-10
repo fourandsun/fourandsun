@@ -145,7 +145,7 @@ export default function Hero() {
             transition={{ duration: 1.1, delay: 0.35, ease }}
             className="mt-9 max-w-2xl text-2xl font-light leading-[1.45] tracking-normal text-slate-800 md:text-4xl"
           >
-            We create lasting connections
+            We create loving sunshine
             <span
               className="ml-0.5 inline-block h-1 w-1 rounded-full bg-orange-800 align-baseline"
               aria-hidden="true"
@@ -170,7 +170,8 @@ export default function Hero() {
           className="border-l border-slate-300/70 pl-6 md:mb-5"
         >
           <p className="text-xs font-light uppercase leading-6 tracking-[0.2em] text-orange-800">
-            loving sunshine, playful works
+            <span className="block">joyful works</span>
+            <span className="block">lasting connections</span>
           </p>
         </motion.aside>
       </div>
