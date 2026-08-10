@@ -7,6 +7,7 @@ import { useActiveSection } from "@/context/ActiveSectionContext";
 import haeilLogo from "../../assets/works/haeil/logo-dark.png";
 import haeilWordmark from "../../assets/works/haeil/wordmark(dark).png";
 import meokjiroLogo from "../../assets/works/meokjiro/logo-ivory.png";
+import recitaurantLogo from "../../assets/works/recitaurant/logo.png";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const haeilAppStoreUrl =
@@ -348,9 +349,11 @@ export default function Made() {
               <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-orange-900/55">
                 work 04
               </p>
-              <h3 className="mt-6 text-4xl font-light leading-tight tracking-tight text-slate-950 md:text-5xl">
-                Recitaurant
-              </h3>
+              <Image
+                src={recitaurantLogo}
+                alt="레시토랑"
+                className="mx-auto mt-6 h-auto w-64 md:w-80"
+              />
               <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-orange-900/60">
                 cook, save, share
               </p>
