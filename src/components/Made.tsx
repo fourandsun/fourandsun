@@ -239,14 +239,25 @@ export default function Made() {
           <div className="flex flex-col justify-between gap-12 p-8 md:p-10">
             <div>
               <div className="flex flex-wrap gap-2">
-                {seaTurtleSoupTags.map((tag) => (
-                  <span
-                    key={tag.label}
-                    className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] ${tag.className}`}
-                  >
-                    {tag.label}
-                  </span>
-                ))}
+                {seaTurtleSoupTags.map((tag) =>
+                  tag.label === "Chap-jeong" ? (
+                    <button
+                      key={tag.label}
+                      type="button"
+                      onClick={() => scrollTo("crew")}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 hover:border-cyan-300 hover:bg-cyan-100 ${tag.className}`}
+                    >
+                      {tag.label}
+                    </button>
+                  ) : (
+                    <span
+                      key={tag.label}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] ${tag.className}`}
+                    >
+                      {tag.label}
+                    </span>
+                  )
+                )}
               </div>
               <p className="mt-8 text-xl font-light leading-[1.8] tracking-tight text-slate-900 md:text-2xl">
                 질문을 따라 숨은 이야기를 찾아가는 추리 게임
