@@ -31,12 +31,28 @@ const members = [
     note: "크루에 들어오기도 전에 제품부터 만들었습니다. 세상을 즐겁게 하는 영향력 있는 제품을 만듭니다.",
   },
   {
+    name: "Ruri",
+    role: "Everyday Solver",
+    mark: "everyday",
+    number: 4,
+    isLeader: false,
+    note: "일상 속 작은 불편을 그냥 지나치지 않습니다. 생각에 그치지 않고, 있으면 더 편안한 생활이 되는 서비스를 만듭니다.",
+  },
+  {
     name: "Inho",
     role: "Composition Director",
     mark: "music",
-    number: 4,
+    number: 5,
     isLeader: false,
     note: "멜로디와 기타로 장면의 온도를 만듭니다. 해일의 Wave를 비롯해 오래 마음에 머무는 음악을 만들고 연주합니다.",
+  },
+  {
+    name: "Maybe You?",
+    role: "Join the Crew",
+    mark: "recruit",
+    number: 6,
+    isLeader: false,
+    note: "좋아하는 것을 직접 만들고, 다정한 영향력을 함께 전할 새로운 크루원을 기다립니다.",
   },
 ];
 
@@ -48,6 +64,36 @@ function CrewMark({
   type: (typeof members)[number]["mark"];
 }) {
   const label = String(number).padStart(2, "0");
+
+  if (type === "everyday") {
+    return (
+      <div className="relative h-[72px] w-[72px] overflow-hidden border border-rose-100 bg-[#FAFAF8] transition-colors duration-500 group-hover:border-amber-200 group-hover:bg-white">
+        <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(251,113,133,0.18),transparent_48%),radial-gradient(circle_at_72%_28%,rgba(251,191,36,0.42),transparent_25%)]" />
+        <div className="absolute left-3 top-3 h-9 w-9 rounded-full border border-rose-200/90" />
+        <div className="absolute left-6 top-6 h-3 w-3 rounded-full bg-amber-200/90" />
+        <div className="absolute right-3 top-4 h-8 w-5 border border-slate-300 bg-white/70" />
+        <div className="absolute right-[15px] top-[21px] h-px w-3 bg-rose-300/80" />
+        <div className="absolute right-[15px] top-[26px] h-px w-2 bg-amber-300/80" />
+        <div className="absolute bottom-4 left-4 h-px w-10 rotate-[-18deg] bg-slate-400/70" />
+        <span className="absolute bottom-2 left-2 text-[11px] font-light tracking-[0.16em] text-slate-600">
+          {label}
+        </span>
+      </div>
+    );
+  }
+
+  if (type === "recruit") {
+    return (
+      <div className="relative flex h-[72px] w-[72px] items-center justify-center overflow-hidden border border-dashed border-rose-300 bg-rose-50/40 transition-colors duration-500 group-hover:border-amber-300 group-hover:bg-white">
+        <span className="text-3xl font-extralight text-rose-400 transition-transform duration-500 group-hover:rotate-90">
+          +
+        </span>
+        <span className="absolute bottom-2 left-2 text-[11px] font-light tracking-[0.16em] text-slate-600">
+          {label}
+        </span>
+      </div>
+    );
+  }
 
   if (type === "love") {
     return (
@@ -126,7 +172,7 @@ export default function Crew() {
           닿기를 바라는 크루입니다.
         </motion.p>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {members.map((member, i) => (
             <motion.article
               key={member.name}
@@ -134,12 +180,7 @@ export default function Crew() {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "-15% 0px" }}
               transition={{ duration: 1.0, delay: i * 0.12, ease }}
-              className={[
-                "group bg-white p-6 transition-colors duration-500 hover:bg-amber-50/40",
-                member.isLeader
-                  ? "border-2 border-rose-300 hover:border-amber-300"
-                  : "border border-rose-300 hover:border-amber-300",
-              ].join(" ")}
+              className="group border border-rose-300 bg-white p-6 transition-colors duration-500 hover:border-amber-300 hover:bg-amber-50/40"
             >
               <CrewMark number={member.number} type={member.mark} />
               <h3 className="mt-8 text-xl font-light tracking-tight text-slate-900">
