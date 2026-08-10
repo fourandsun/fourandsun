@@ -6,6 +6,8 @@ import SectionLayout from "@/components/SectionLayout";
 import { useActiveSection } from "@/context/ActiveSectionContext";
 import haeilLogo from "../../assets/works/haeil/logo-dark.png";
 import haeilWordmark from "../../assets/works/haeil/wordmark(dark).png";
+import meokjiroLogo from "../../assets/works/meokjiro/logo-ivory.png";
+import recitaurantLogo from "../../assets/works/recitaurant/logo.png";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const haeilAppStoreUrl =
@@ -85,6 +87,23 @@ const catnapTags = [
   },
   {
     label: "guitar",
+    className: "border-slate-200 text-slate-500",
+  },
+];
+const meokjiroTags = [
+  {
+    label: "Ruri",
+    isMember: true,
+    className: "border-rose-200 bg-rose-50 text-rose-700",
+  },
+  {
+    label: "food map app",
+    isMember: false,
+    className: "border-slate-200 text-slate-500",
+  },
+  {
+    label: "schedule & sharing",
+    isMember: false,
     className: "border-slate-200 text-slate-500",
   },
 ];
@@ -330,9 +349,11 @@ export default function Made() {
               <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-orange-900/55">
                 work 04
               </p>
-              <h3 className="mt-6 text-4xl font-light leading-tight tracking-tight text-slate-950 md:text-5xl">
-                Recitaurant
-              </h3>
+              <Image
+                src={recitaurantLogo}
+                alt="레시토랑"
+                className="mx-auto mt-6 h-auto w-64 md:w-80"
+              />
               <p className="mt-5 text-[11px] font-light uppercase tracking-[0.22em] text-orange-900/60">
                 cook, save, share
               </p>
@@ -386,7 +407,7 @@ export default function Made() {
         transition={{ duration: 1.2, delay: 0.3, ease }}
         className="overflow-hidden border border-violet-200/80 bg-white"
       >
-        <div className="grid gap-0 md:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid gap-0 md:min-h-[28rem] md:grid-cols-[1.05fr_0.95fr]">
           <div className="relative flex min-h-80 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_30%_28%,rgba(109,40,217,0.32),transparent_34%),radial-gradient(circle_at_72%_68%,rgba(30,41,59,0.72),transparent_42%),linear-gradient(135deg,#181326,#020617)] p-8 md:p-10">
             <div className="pointer-events-none absolute -bottom-16 -left-10 h-56 w-56 rounded-full bg-violet-950/45 blur-3xl" />
             <div className="pointer-events-none absolute left-[14%] top-1/2 h-px w-[72%] -translate-y-1/2 rotate-[-8deg] bg-violet-400/25" />
@@ -446,6 +467,92 @@ export default function Made() {
             >
               Listen on YouTube
             </a>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}
+        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        viewport={{ once: true, margin: "-15% 0px" }}
+        transition={{ duration: 1.2, delay: 0.35, ease }}
+        className="overflow-hidden border border-rose-200/80 bg-white"
+      >
+        <div className="grid gap-0 md:min-h-[28rem] md:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative flex min-h-80 items-center justify-center overflow-hidden bg-[#FF4F87] p-8 md:p-10">
+            <div className="relative text-center">
+              <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-[#FFF4EA]/70">
+                work 06
+              </p>
+              <Image
+                src={meokjiroLogo}
+                alt="먹지로"
+                className="mx-auto -my-8 h-auto w-52 md:w-64"
+              />
+              <p className="text-[11px] font-light uppercase tracking-[0.22em] text-[#FFF4EA]/75">
+                map · food · schedule · share
+              </p>
+            </div>
+            <p className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[11px] font-medium uppercase tracking-[0.18em] text-[#FFF4EA]/80">
+              Coming soon
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-between gap-12 p-8 md:p-10">
+            <div>
+              <div className="flex flex-wrap gap-2">
+                {meokjiroTags.map((tag) =>
+                  tag.isMember ? (
+                    <button
+                      key={tag.label}
+                      type="button"
+                      onClick={() => scrollTo("crew")}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 hover:border-rose-300 hover:bg-rose-100 ${tag.className}`}
+                    >
+                      {tag.label}
+                    </button>
+                  ) : (
+                    <span
+                      key={tag.label}
+                      className={`border px-3 py-1 text-[11px] uppercase tracking-[0.16em] ${tag.className}`}
+                    >
+                      {tag.label}
+                    </span>
+                  )
+                )}
+              </div>
+              <p className="mt-8 text-xl font-light leading-[1.8] tracking-tight text-slate-900 md:text-2xl">
+                나만의 맛집 지도로 여행과 일상을 더 맛있게
+              </p>
+              <div className="mt-5 space-y-3 text-sm font-light leading-7 text-slate-600">
+                <p>
+                  먹지로는 지도로 나만의 맛집을 기록하고, 일정을 계획하며, 친구와 공유하는 올인원 맛집 기록 앱입니다.
+                </p>
+                <p>
+                  가고 싶은 곳, 다녀온 곳을 지도에 저장하고 후기와 함께 나만의 맛있는 길을 완성해보세요.
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div className="flex flex-wrap gap-x-4 gap-y-2 text-[10px] font-light uppercase tracking-[0.14em] text-slate-400">
+                {[
+                  "Planned by Cho-ok",
+                  "Built by Dong32",
+                ].map((credit) => (
+                  <button
+                    key={credit}
+                    type="button"
+                    onClick={() => scrollTo("crew")}
+                    className="transition-colors duration-300 hover:text-rose-500"
+                  >
+                    {credit}
+                  </button>
+                ))}
+              </div>
+              <span className="w-fit border border-rose-200 px-4 py-3 text-xs font-light uppercase tracking-[0.18em] text-rose-500">
+                Coming soon
+              </span>
+            </div>
           </div>
         </div>
       </motion.div>
